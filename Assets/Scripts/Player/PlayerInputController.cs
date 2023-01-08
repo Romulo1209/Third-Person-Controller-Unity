@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -13,12 +14,18 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] bool isMoving;
     [SerializeField] bool isJumping;
     [SerializeField] bool isSprinting;
-    [SerializeField] bool isBackpack;
+    [Space]
+    [SerializeField] bool inBackpack;
+    [SerializeField] bool inPause;
 
-    private PlayerController playerController;
+    [Space(15)]
+
+    [SerializeField] private CinemachineFreeLook cameraBrain;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private WindowController windowController;
+
     private PlayerInputActions playerInput;
 
-    //Getters
     #region Getters
 
     public Vector2 Movement { get { return movement; } }
@@ -26,12 +33,13 @@ public class PlayerInputController : MonoBehaviour
     public bool IsMoving { get { return isMoving; } }
     public bool IsJumping { get { return isJumping; } }
     public bool IsSprinting { get { return isSprinting; } }
-    public bool IsBackpack { get { return isBackpack; } }
+    public bool InBackpack { get { return inBackpack; } }
+    public bool InPause { get { return inPause; } }
 
     #endregion
 
     private void Awake() {
-        playerController = GetComponent<PlayerController>();
+        CheckIfCanMove();
 
         playerInput = new PlayerInputActions();
         playerInput.Player.Enable();
@@ -46,8 +54,11 @@ public class PlayerInputController : MonoBehaviour
         playerInput.Player.Sprint.canceled += SprintEnd;
 
         playerInput.Player.Backpack.performed += BackpackStart;
-        playerInput.Player.Backpack.canceled += BackpackEnd;
+
+        playerInput.Player.Pause.performed += PauseStart;
     }
+
+    #region Inputs Actions
 
     //Movement
     private void MoveStart(InputAction.CallbackContext context) {
@@ -78,9 +89,43 @@ public class PlayerInputController : MonoBehaviour
 
     //Backpack
     private void BackpackStart(InputAction.CallbackContext context) {
-        isBackpack = true;
+        SetBackpack();
     }
-    private void BackpackEnd(InputAction.CallbackContext context) {
-        isBackpack= false;
+
+    //Pause
+    private void PauseStart(InputAction.CallbackContext context) {
+        SetPause();
+    }
+
+    #endregion
+
+    void SetBackpack() {
+        inBackpack = inBackpack == true ? false : true;
+        canMove = CheckIfCanMove();
+        if (!inBackpack) {
+            windowController.OpenGameplay();
+            return;
+        }
+        windowController.OpenBackpack();
+    }
+    void SetPause() {
+        inPause = inPause == true ? false : true;
+        canMove = CheckIfCanMove();
+        if (!InPause) {
+            windowController.OpenGameplay();
+            return;
+        } 
+        windowController.OpenPause();
+    }
+
+    bool CheckIfCanMove() {
+        if (inBackpack || inPause) {
+            cameraBrain.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            return false;
+        }
+        cameraBrain.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        return true;
     }
 }

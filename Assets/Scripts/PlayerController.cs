@@ -31,16 +31,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform cam;
 
-    private void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-        Application.targetFrameRate = 0;
-    }
     void Update()
     {
-        if (playerInput.CanMove)
-            Movement(playerInput.Movement);
-        Gravity();
-        Animations();
+        if (!playerInput.InPause) {
+            if(playerInput.CanMove)
+                Movement(playerInput.Movement);
+            Gravity();
+            Animations();
+        }
     }
 
 

@@ -19,4 +19,18 @@ public class WindowController : MonoBehaviour
         window.OpenWindow();
         FocusWindow = window;
     }
+
+
+    //Temporario pq nao tem nada do sistema de janelas
+    public void OpenGameplay() {
+        Time.timeScale = 1;
+        OpenWindow(Windows[0]);
+    }
+    public void OpenPause() {
+        Time.timeScale = 0;
+        OpenWindow(Windows[2]);
+    }
+    public void OpenBackpack() {
+        OpenWindow(Windows[1]);
+    }
 }
