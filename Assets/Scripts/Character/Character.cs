@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
 
         inventory.OnItemRightClickedEvent += EquipFromInventory;
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+        inventory.Setup();
+        equipmentPanel.Setup();
     }
 
     private void EquipFromInventory(Item item)

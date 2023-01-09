@@ -34,10 +34,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!playerInput.InPause) {
-            if(playerInput.CanMove)
+            if (playerInput.CanMove) {
                 Movement(playerInput.Movement);
+                Animations();
+            }
             Gravity();
-            Animations();
         }
     }
 
