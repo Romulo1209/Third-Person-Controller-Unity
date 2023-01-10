@@ -331,7 +331,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Blink/Art/Characters/LowPoly/Editor/MaterialTilingOffset.cs"
+"Assets/Imports/Blink/Art/Characters/LowPoly/Editor/MaterialTilingOffset.cs"
 -langversion:8.0
 
 /deterministic

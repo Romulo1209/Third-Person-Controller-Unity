@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public void Movement(Vector2 dir)
     {
         Vector3 direction = new Vector3(dir.x, 0f, dir.y).normalized;
