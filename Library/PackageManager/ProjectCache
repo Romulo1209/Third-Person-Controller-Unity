@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638088652898628753
-    m_Hash: 1119229267
+      ticks: 638090640793148882
+    m_Hash: 2745575684
   m_LockFileStatus:
     m_FilePath: C:/Users/PLAYFOX/Desktop/Third-Person-Controller-Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638088656038468292
-    m_Hash: 2848234226
+      ticks: 638090640793208878
+    m_Hash: 3857857976
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,12 +22,12 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/PLAYFOX/Desktop/Third-Person-Controller-Unity/Packages
 m_EditorVersion: 2021.1.15f1 (e767a7370072)
 m_ResolvedPackages:
-- packageId: com.unity.cinemachine@2.8.6
+- packageId: com.unity.cinemachine@2.7.9
   testable: 0
   isDirectDependency: 1
-  version: 2.8.6
+  version: 2.7.9
   source: 1
-  resolvedPath: C:\Users\PLAYFOX\Desktop\Third-Person-Controller-Unity\Library\PackageCache\com.unity.cinemachine@2.8.6
+  resolvedPath: C:\Users\PLAYFOX\Desktop\Third-Person-Controller-Unity\Library\PackageCache\com.unity.cinemachine@2.7.9
   assetPath: Packages/com.unity.cinemachine
   name: com.unity.cinemachine
   displayName: Cinemachine
@@ -168,13 +168,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637891007790000000
+  datePublishedTicks: 637703219070000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.com/Unity-Technologies/com.unity.cinemachine.git
-    revision: 5e26d3cd08865a98219c0d2d3a8cc689018dd75b
+    revision: 45030a8e7a24daae3215fc89709d5f771e4194fb
     path: 
   unityLifecycle:
     version: 2.7.4
@@ -410,6 +410,7 @@ m_ResolvedPackages:
     - 3.0.15
     - 3.0.16
     - 3.0.17
+    - 3.0.18
     compatible:
     - 3.0.7
     - 3.0.9
@@ -420,7 +421,8 @@ m_ResolvedPackages:
     - 3.0.15
     - 3.0.16
     - 3.0.17
-    verified: 3.0.17
+    - 3.0.18
+    verified: 3.0.18
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6

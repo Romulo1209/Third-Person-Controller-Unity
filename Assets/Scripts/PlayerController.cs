@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Components")]
 
+    [SerializeField] private InversedKinematic ik;
     [SerializeField] private PlayerInputController playerInput; 
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
@@ -71,13 +72,19 @@ public class PlayerController : MonoBehaviour
     public void Jump() {
         if (isGrounded) {
             animator.SetTrigger("Jump");
+            IKSwitch(false);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityForce);
         }
+    }
+    public void IKSwitch(bool state = true) {
+        ik.enableFeetIK = state;
     }
 
     void Gravity()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
+        if (isGrounded)
+            IKSwitch();
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 

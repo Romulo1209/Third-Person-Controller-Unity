@@ -59,10 +59,13 @@
     <Compile Include="Assets\Scripts\Character\CharacterStat.cs" />
     <Compile Include="Assets\Scripts\Character\StatDisplay.cs" />
     <Compile Include="Assets\Scripts\Character\StatPanel.cs" />
+    <Compile Include="Assets\Scripts\Player\InversedKinematic.cs" />
     <Compile Include="Assets\Scripts\Window\WindowBase.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Items\EquipmentSlot.cs" />
+    <Compile Include="Assets\Imports\Stylized 3D Tools\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInputController.cs" />
+    <Compile Include="Assets\Scripts\Tooltips\ItemTooltip.cs" />
     <Compile Include="Assets\Scripts\Items\EquipmentPanel.cs" />
     <Compile Include="Assets\Scripts\Window\Window.cs" />
     <Compile Include="Assets\InputSystem\PlayerInputActions.cs" />
@@ -74,11 +77,9 @@
     <Compile Include="Assets\Scripts\PlayerInteractController.cs" />
     <Compile Include="Assets\Scripts\Items\Inventory.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Tooltips\StatTooltip.cs" />
     <Compile Include="Assets\Scripts\Window\WindowController.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
-    <Compile Include="Assets\Scripts\Tooltips\ItemTooltip.cs" />
-    <Compile Include="Assets\Scripts\Tooltips\StatTooltip.cs" />
-    <Compile Include="Assets\Imports\Stylized 3D Tools\Scripts\Rotator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -99,6 +100,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Customizable Skybox\Stylized Sky\Shaders\Stylized Sky.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -339,7 +341,7 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.15f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="clipper_library">
-      <HintPath>Library\PackageCache\com.unity.cinemachine@2.8.6\Runtime\ThirdParty\clipper_library.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.cinemachine@2.7.9\Runtime\ThirdParty\clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.15f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
