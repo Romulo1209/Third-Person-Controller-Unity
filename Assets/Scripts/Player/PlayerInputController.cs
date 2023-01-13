@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
@@ -14,6 +15,7 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] bool isMoving;
     [SerializeField] bool isJumping;
     [SerializeField] bool isSprinting;
+    [SerializeField] bool isInteracting;
     [Space]
     [SerializeField] bool inBackpack;
     [SerializeField] bool inPause;
@@ -26,6 +28,9 @@ public class PlayerInputController : MonoBehaviour
 
     private PlayerInputActions playerInput;
 
+    //public UnityEvent InteractEvent { get { return interactEvent; } set { interactEvent = value; } }
+    [HideInInspector] public UnityEvent InteractEvent;
+
     #region Getters
 
     public Vector2 Movement { get { return movement; } }
@@ -33,12 +38,15 @@ public class PlayerInputController : MonoBehaviour
     public bool IsMoving { get { return isMoving; } }
     public bool IsJumping { get { return isJumping; } }
     public bool IsSprinting { get { return isSprinting; } }
+    public bool IsInteracting { get { return isInteracting; } }
     public bool InBackpack { get { return inBackpack; } }
     public bool InPause { get { return inPause; } }
 
     #endregion
 
     private void Awake() {
+        Application.targetFrameRate = 0;
+
         CheckIfCanMove();
 
         playerInput = new PlayerInputActions();
@@ -52,6 +60,9 @@ public class PlayerInputController : MonoBehaviour
 
         playerInput.Player.Sprint.performed += SprintStart;
         playerInput.Player.Sprint.canceled += SprintEnd;
+
+        playerInput.Player.Interact.performed += InteractStart;
+        playerInput.Player.Interact.canceled += InteractEnd;
 
         playerInput.Player.Backpack.performed += BackpackStart;
 
@@ -85,6 +96,15 @@ public class PlayerInputController : MonoBehaviour
     }
     private void SprintEnd(InputAction.CallbackContext context) {
         isSprinting = false;
+    }
+
+    //Interact
+    private void InteractStart(InputAction.CallbackContext context) {
+        isInteracting = true;
+        InteractEvent.Invoke();
+    }
+    private void InteractEnd(InputAction.CallbackContext context) {
+        isInteracting = false;
     }
 
     //Backpack

@@ -64,7 +64,9 @@
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Items\EquipmentSlot.cs" />
     <Compile Include="Assets\Imports\Stylized 3D Tools\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\Collectable\InteractUIController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInputController.cs" />
+    <Compile Include="Assets\Scripts\Collectable\Interactable.cs" />
     <Compile Include="Assets\Scripts\Tooltips\ItemTooltip.cs" />
     <Compile Include="Assets\Scripts\Items\EquipmentPanel.cs" />
     <Compile Include="Assets\Scripts\Window\Window.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets\Scripts\Items\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Tools\ObjectsRename.cs" />
     <Compile Include="Assets\Scripts\Items\EquippableItem.cs" />
+    <Compile Include="Assets\Scripts\Collectable\ItemCollectable.cs" />
     <Compile Include="Assets\Scripts\Character\StatModifier.cs" />
     <Compile Include="Assets\Scripts\CharacterParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerInteractController.cs" />

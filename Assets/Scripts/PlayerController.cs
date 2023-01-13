@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     float turnSmoothVelocity;
 
     [Header("States")]
+    [SerializeField] bool debugController;
     [SerializeField] bool isGrounded;
     [SerializeField] bool onBackpack;
 
@@ -82,7 +83,10 @@ public class PlayerController : MonoBehaviour
 
     void Gravity()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
+        //GroundCheck();
+
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
+        isGrounded = GroundCheck();
         if (isGrounded)
             IKSwitch();
         if (isGrounded && velocity.y < 0)
@@ -91,6 +95,24 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravityForce * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    bool GroundCheck()
+    {
+        RaycastHit groundHit;
+        List<Vector3> positions = new List<Vector3>();
+        positions.Add(ik.RightFeetPosition);
+        positions.Add(ik.LeftFeetPosition);
+
+        if (debugController) {
+            Debug.DrawLine(positions[0], positions[0] + Vector3.down * (groundDistance), Color.red);
+            Debug.DrawLine(positions[1], positions[1] + Vector3.down * (groundDistance), Color.red);
+        }
+        foreach (Vector3 pos in positions) {
+            if (Physics.Raycast(pos, Vector3.down, out groundHit, groundDistance, groundLayer))
+                return true;
+        }
+        return false;
     }
 
     void Animations() {

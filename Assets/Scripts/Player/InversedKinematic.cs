@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class InversedKinematic : MonoBehaviour
 {
+    #region Getters
+
+    public Vector3 RightFeetPosition { 
+        get { 
+            var pos = rightFootPosition; 
+            pos.y += 0.3f; 
+            return pos; 
+        }
+    }
+    public Vector3 LeftFeetPosition { 
+        get {
+            var pos = leftFootPosition;
+            pos.y += 0.3f;
+            return pos; 
+        }
+    }
+
+    #endregion
+
     private Vector3 rightFootPosition, leftFootPosition, rightFootIKPosition, leftFootIKPosition;
     private Quaternion leftFootIKRotation, rightFootIKRotation;
     private float lastPelvisPositionY, lastRightFootPositionY, lastLeftFootPositionY;
