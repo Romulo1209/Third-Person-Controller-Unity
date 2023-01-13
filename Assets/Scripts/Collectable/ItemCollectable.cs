@@ -15,6 +15,7 @@ public class ItemCollectable : Interactable
     }
     public override void Interact()
     {
+        InteractUIController.instance.AddItemToInventory(item);
         inventory.AddItem(item);
         Destroy(gameObject);
     }

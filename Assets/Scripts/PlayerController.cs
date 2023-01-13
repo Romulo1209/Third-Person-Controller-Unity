@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("States")]
     [SerializeField] bool debugController;
+    [SerializeField] bool usesIK;
     [SerializeField] bool isGrounded;
     [SerializeField] bool onBackpack;
 
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        ik.enableFeetIK = usesIK;
+
         if (!playerInput.InPause) {
             if (playerInput.CanMove) {
                 Movement(playerInput.Movement);
@@ -73,7 +76,8 @@ public class PlayerController : MonoBehaviour
     public void Jump() {
         if (isGrounded) {
             animator.SetTrigger("Jump");
-            IKSwitch(false);
+            if(usesIK)
+                IKSwitch(false);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityForce);
         }
     }
@@ -88,7 +92,8 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
         isGrounded = GroundCheck();
         if (isGrounded)
-            IKSwitch();
+            if(usesIK)
+                IKSwitch();
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 

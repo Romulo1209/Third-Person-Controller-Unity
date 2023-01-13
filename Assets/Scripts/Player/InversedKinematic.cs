@@ -47,11 +47,12 @@ public class InversedKinematic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!enableFeetIK) return;
         if (anim == null) return;
 
         AdjustFeetTarget(ref rightFootPosition, HumanBodyBones.RightFoot);
         AdjustFeetTarget(ref leftFootPosition, HumanBodyBones.LeftFoot);
+
+        if (!enableFeetIK) return;
 
         //Find and raycast to the ground to find positions
         FeetPositionSolver(rightFootPosition, ref rightFootIKPosition, ref rightFootIKRotation);

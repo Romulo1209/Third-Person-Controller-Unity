@@ -28,7 +28,6 @@ public class PlayerInputController : MonoBehaviour
 
     private PlayerInputActions playerInput;
 
-    //public UnityEvent InteractEvent { get { return interactEvent; } set { interactEvent = value; } }
     [HideInInspector] public UnityEvent InteractEvent;
 
     #region Getters
