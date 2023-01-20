@@ -22,7 +22,7 @@ public class PlayerInteractController : MonoBehaviour
         if (itemReturn != null) {
             interactUI.Show(itemReturn);
 
-            ItemCollectable item = itemReturn as ItemCollectable;
+            Interactable item = itemReturn;
             if (item != null) {
                 inputController.InteractEvent.RemoveAllListeners();
                 inputController.InteractEvent.AddListener(item.Interact);

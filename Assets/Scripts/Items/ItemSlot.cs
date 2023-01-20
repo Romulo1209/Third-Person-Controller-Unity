@@ -2,10 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ItemSlot : MonoBehaviour , IPointerClickHandler , IPointerEnterHandler , IPointerExitHandler , IBeginDragHandler , IEndDragHandler , IDragHandler , IDropHandler
 {
     [SerializeField] Image SlotImage;
+    [SerializeField] TMP_Text amountText;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -35,10 +37,25 @@ public class ItemSlot : MonoBehaviour , IPointerClickHandler , IPointerEnterHand
         }
     }
 
+    private int _amount;
+    public int Amount
+    {
+        get { return _amount; }
+        set {
+            _amount = value;
+            amountText.enabled = _item != null && _item.maximumStack > 1;
+            if (amountText.enabled) {
+                amountText.text = _amount.ToString();
+            }
+        }
+    }
+
     protected virtual void OnValidate()
     {
         if (SlotImage == null)
             SlotImage = transform.GetChild(0).GetComponent<Image>();
+        if (amountText == null)
+            amountText = GetComponentInChildren<TMP_Text>();
     }
 
     public virtual bool CanRecieveItem(Item item)

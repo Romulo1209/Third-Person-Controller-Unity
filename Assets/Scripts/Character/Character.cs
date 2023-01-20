@@ -18,6 +18,11 @@ public class Character : MonoBehaviour
 
     private ItemSlot draggedSlot;
 
+    public Inventory InventoryGet { get { return inventory; } }
+    public EquipmentPanel EquipmentPanelGet { get { return equipmentPanel; } }
+    public StatPanel StatPanelGet { get { return statPanel; } }
+    public ItemTooltip ItemTooltipGet { get { return itemTooltip; } }
+
     private void OnValidate()
     {
         if (itemTooltip == null)
@@ -50,6 +55,9 @@ public class Character : MonoBehaviour
         //Drop
         inventory.OnDropEvent += Drop;
         equipmentPanel.OnDropEvent += Drop;
+
+        inventory.Setup();
+        equipmentPanel.Setup();
     }
 
     #region Events Functions
@@ -93,6 +101,8 @@ public class Character : MonoBehaviour
         }
     }
     private void Drop(ItemSlot dropItemSlot) {
+        if (draggedSlot == null) return;
+
         if (dropItemSlot.CanRecieveItem(draggedSlot.Item) && draggedSlot.CanRecieveItem(dropItemSlot.Item)) {
             EquippableItem dragItem = draggedSlot.Item as EquippableItem;
             EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
@@ -110,8 +120,13 @@ public class Character : MonoBehaviour
             statPanel.UpdateStatValues();
 
             Item draggetItem = draggedSlot.Item;
+            int draggedItemAmmount = draggedSlot.Amount;
+
             draggedSlot.Item = dropItemSlot.Item;
+            draggedSlot.Amount = dropItemSlot.Amount;
+
             dropItemSlot.Item = draggetItem;
+            dropItemSlot.Amount = draggedItemAmmount;
         }
     }
 
